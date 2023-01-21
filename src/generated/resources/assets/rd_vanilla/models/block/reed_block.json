@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "rd_vanilla:block/reed_block_top",
+    "side": "rd_vanilla:block/reed_block"
+  }
+}

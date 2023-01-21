@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "rd_vanilla:block/reed_slab"
+    },
+    "type=double": {
+      "model": "rd_vanilla:block/reed_planks"
+    },
+    "type=top": {
+      "model": "rd_vanilla:block/reed_slab_top"
+    }
+  }
+}

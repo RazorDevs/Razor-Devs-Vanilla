@@ -1,0 +1,15 @@
+// 1.19.3	2023-01-21T10:55:28.7960366	Block States: rd_vanilla
+9dccae7c9a85c450f9ab2ea703e5d44e35fa4db6 assets/rd_vanilla/blockstates/reed_block.json
+45920c3bfc66d90bd09e3097bb27982bce9bd9cb assets/rd_vanilla/blockstates/reed_planks.json
+449f8c6304f67bb40b0245043896d3d2252d1326 assets/rd_vanilla/blockstates/reed_plant.json
+fdf0cbec4fe6e75c29208a32e369d270abeff7d4 assets/rd_vanilla/blockstates/reed_slab.json
+d7f5ea904211215ef357d36070a613d1cc5eadf2 assets/rd_vanilla/blockstates/reed_stairs.json
+9423f50ea7a9cbf3b1268be563e63cafff92b081 assets/rd_vanilla/models/block/reed_block.json
+5b7dd6294654b17a3af4f63b10816e168684ab61 assets/rd_vanilla/models/block/reed_block_horizontal.json
+ea38c923843fff6be9ea6d50c1f24da7bdfae8f4 assets/rd_vanilla/models/block/reed_planks.json
+06e85d5a933b907f0eadf369be5a8e2d713c4d4e assets/rd_vanilla/models/block/reed_plant.json
+8d30550df3ae48d0b757e9b288a1fd66ae82e428 assets/rd_vanilla/models/block/reed_slab.json
+2396421df2ba5ea7fbc659e7735f1956c16da258 assets/rd_vanilla/models/block/reed_slab_top.json
+18c6c85d302ef0679bb125bcda243a8beecffd6e assets/rd_vanilla/models/block/reed_stairs.json
+62e7d3e8e5dc918419c4cefa2653da33a5798d3a assets/rd_vanilla/models/block/reed_stairs_inner.json
+1ca6695e535569ba3d6efa382bead489b9e21344 assets/rd_vanilla/models/block/reed_stairs_outer.json
