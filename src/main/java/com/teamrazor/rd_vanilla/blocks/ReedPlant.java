@@ -25,12 +25,13 @@ import net.minecraftforge.common.IPlantable;
 
 public class ReedPlant extends Block implements IPlantable {
 
+    public static final BooleanProperty TOP = RDVBlockstateProperties.TOP;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
     public ReedPlant(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)).setValue(WATERLOGGED, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(TOP, Boolean.valueOf(false)).setValue(AGE, Integer.valueOf(0)).setValue(WATERLOGGED, Boolean.valueOf(false)).setValue(TOP, Boolean.valueOf(false)));
 
     }
 
@@ -59,18 +60,18 @@ public class ReedPlant extends Block implements IPlantable {
         }
     }
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockBlockStateBuilder) {
-        blockBlockStateBuilder.add(AGE).add(WATERLOGGED);
+        blockBlockStateBuilder.add(AGE).add(WATERLOGGED).add(TOP);
 
     }
     public boolean canSurvive(BlockState pBlockState, LevelReader levelReader, BlockPos blockpos) {
-        BlockState soil = levelReader.getBlockState(blockpos.below());
         if (levelReader.getBlockState(blockpos) == Blocks.WATER.defaultBlockState()) return true;
-        BlockState blockstate = levelReader.getBlockState(blockpos.below());
-        if (blockstate.is(this) && (levelReader.getBlockState(blockpos) == Blocks.WATER.defaultBlockState()
-                || levelReader.getBlockState(blockpos.below()) == Blocks.WATER.defaultBlockState())
-                || levelReader.getBlockState(blockpos.below(2)) == Blocks.WATER.defaultBlockState()) {
-            return true;
-        }
+        BlockState blockState = levelReader.getBlockState(blockpos.below());
+
+        if (blockState.is( this) && (blockState.getValue(WATERLOGGED).booleanValue())) return true;
+
+        BlockState blockState1 = levelReader.getBlockState(blockpos.below(2));
+        if (blockState1.is( this) && (blockState1.getValue(WATERLOGGED).booleanValue())) return true;
+
         else return false;
     }
     public BlockState updateShape(BlockState blockstate, Direction direction, BlockState blockState, LevelAccessor level, BlockPos pos, BlockPos pos1) {
@@ -80,6 +81,11 @@ public class ReedPlant extends Block implements IPlantable {
         if (!blockState.canSurvive(level, pos)) {
             level.scheduleTick(pos, this, 1);
         }
+        if (level.getBlockState(pos.above()) != this.defaultBlockState()) {
+            this.defaultBlockState().setValue(TOP, Boolean.valueOf(true));
+        }
+        else this.defaultBlockState().setValue(TOP, Boolean.valueOf(false));
+
         return super.updateShape(blockstate, direction, blockState, level, pos, pos1);
     }
     @Override
